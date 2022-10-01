@@ -60,9 +60,9 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
           />
         <p className="errorMsg">{passwordError}</p>
-        {/* <div className="btnContainer">
+        <div className="">
         <button style={{backgroundColor: buttonStyle.backgroundColor, color: buttonStyle.color}}>{buttonStyle.text}</button>
-        </div> */}
+        </div>
          </form>
       </div>
     </section>
