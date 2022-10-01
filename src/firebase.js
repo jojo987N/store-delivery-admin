@@ -16,6 +16,14 @@ import { getAuth } from 'firebase/auth';
   messagingSenderId: {/* Your firebase config here */},
 
   appId: {/* Your firebase config here */},
+
+  apiKey: "AIzaSyDgDMdmkB50rwTRdaMXL4fAdcgYksET2-s",
+  authDomain: "store-delivery-43cb0.firebaseapp.com",
+  projectId: "store-delivery-43cb0",
+  storageBucket: "store-delivery-43cb0.appspot.com",
+  messagingSenderId: "283406701144",
+  appId: "1:283406701144:web:d05dbea3aded6c00d5b02d"
+
   
   };
   export const firebaseApp = initializeApp(firebaseConfig);
