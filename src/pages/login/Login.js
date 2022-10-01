@@ -5,6 +5,7 @@ import "./login.scss"
 import { useNavigate } from "react-router-dom";
 import { RestaurantContext } from "../../context/RestaurantContext";
 import { LoadingContext } from "../../context/LoadingContext";
+import { appName } from "../../../global";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,8 +41,8 @@ const Login = () => {
     <section className="login">
       <div className="loginContainer" >
       <div style={{display: "flex", justifyContent: "center"}}>
-        <h1 style={{color: "white", fontSize: 25}}>Good</h1>
-        <h1 style={{color: "green", marginLeft: 10, fontSize: 25}}>Food</h1>
+        <h1 style={{color: "white", fontSize: 25}}>{appName.split(' ')[0]}</h1>
+        <h1 style={{color: "green", marginLeft: 10, fontSize: 25}}>{appName.split(' ')[1]}</h1>
       </div>
       <form onSubmit={SignInUser}>
         <label>Username</label>
