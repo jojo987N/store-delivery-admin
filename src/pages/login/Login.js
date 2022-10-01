@@ -5,7 +5,7 @@ import "./login.scss"
 import { useNavigate } from "react-router-dom";
 import { RestaurantContext } from "../../context/RestaurantContext";
 import { LoadingContext } from "../../context/LoadingContext";
-import { appName } from "../../../global";
+import { appName } from "../../global";
 
 const Login = () => {
   const navigate = useNavigate();
