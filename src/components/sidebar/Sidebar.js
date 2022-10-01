@@ -71,9 +71,9 @@ const Sidebar = ({ type }) => {
       getItem("Drivers List", "/drivers"),
       getItem("Add Driver", "/drivers/new"),
     ]),
-    getItem("Restaurants", "sub3", <RestaurantIcon className="icon" />, [
-      getItem("Restaurants List", "/restaurants"),
-      getItem("Add Restaurant", "/restaurants/new"),
+    getItem("Stores", "sub3", <RestaurantIcon className="icon" />, [
+      getItem("Stores List", "/stores"),
+      getItem("Add Store", "/stores/new"),
     ]),
     getItem("Categories", "sub4", <CategoryIcon className="icon" />, [
       getItem("Categories List", "/categories"),

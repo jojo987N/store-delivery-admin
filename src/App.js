@@ -78,12 +78,12 @@ function App() {
                       element={<New inputs={productInputs} type="orders" title="Add New Order" />}
                     />
                   </Route>
-                  <Route path="restaurants">
-                    <Route index element={<List key="restaurants" type="restaurants" />} />
-                    <Route path=":restaurantId" element={<New inputs={restaurantInputs} type="restaurants" title="Update Restaurant" />} />
+                  <Route path="stores">
+                    <Route index element={<List key="stores" type="stores" />} />
+                    <Route path=":storeId" element={<New inputs={restaurantInputs} type="stores" title="Update Store" />} />
                     <Route
                       path="new"
-                      element={<New inputs={restaurantInputs} type="restaurants" title="Add New Restaurant" />}
+                      element={<New inputs={restaurantInputs} type="stores" title="Add New Store" />}
                     />
                   </Route>
                   <Route path="drivers">
