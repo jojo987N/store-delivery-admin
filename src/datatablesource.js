@@ -48,8 +48,8 @@ export const userColumns = [
 
 export const productColumns = [
   {
-    field: "menu",
-    headerName: <b>Menu</b>,
+    field: "product",
+    headerName: <b>Product</b>,
     width: 230,
     renderCell: (params) => {
       return (

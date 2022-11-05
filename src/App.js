@@ -64,10 +64,10 @@ function App() {
                   </Route>
                   <Route path="products">
                     <Route index element={<List key="products" type="products" />} />
-                    <Route path=":id" element={<New inputs={productInputs} type="product" title="Update Menu" />} />
+                    <Route path=":id" element={<New inputs={productInputs} type="product" title="Update " />} />
                     <Route
                       path="new"
-                      element={<New inputs={productInputs} type="products" title="Add New Menu" />}
+                      element={<New inputs={productInputs} type="products" title="Add New Product" />}
                     />
                   </Route>
                   <Route path="orders">

@@ -61,8 +61,8 @@ const Sidebar = ({ type }) => {
       getItem("Users List", "/users"),
       getItem("Add User", "/users/new"),
     ]),
-    getItem("Menus", "sub0", <StoreIcon className="icon" />, [
-      getItem("Menus List", "/products"),
+    getItem("Products", "sub0", <StoreIcon className="icon" />, [
+      getItem("Products List", "/products"),
     ]),
     getItem("Orders", "sub1", <CreditCardIcon className="icon" />, [
       getItem("Orders List", "/orders"),

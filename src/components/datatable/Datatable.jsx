@@ -68,7 +68,7 @@ const Datatable = ({type}) => {
     await getEarnings().then(storesEarnings => localStorage.setItem(process.env.REACT_APP_EARNINGS_KEY, encryptData(Object.keys(storesEarnings).map((store, index) => ({id: index, store:store, earning:storesEarnings[store], adminCommission: storesEarnings[store], percentage: 25}) ))))
     switch (type) {
       case "products":
-        setTitle("Menu")
+        setTitle("Product")
       if(!localStorage.getItem(process.env.REACT_APP_PRODUCTS_KEY))
        getFoods().then(foods => localStorage.setItem(process.env.REACT_APP_PRODUCTS_KEY, encryptData(foods)))
        .then(foods => setTab({
