@@ -6,13 +6,13 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { RestaurantContext } from "../../context/RestaurantContext";
+import { StoreContext } from "../../context/StoreContext";
 import { decryptData } from "../../utils";
 
 
 const Widget = ({ type }) => {
   let data;
-  const { currentRestaurant } = useContext(RestaurantContext)
+  const { currentStore } = useContext(StoreContext)
 
 
   const amount = 100;
@@ -57,10 +57,10 @@ const Widget = ({ type }) => {
       data = {
         title: "EARNINGS",
 
-        number: currentRestaurant ?
+        number: currentStore ?
 
           decryptData(localStorage.getItem(process.env.REACT_APP_EARNINGS_KEY))
-            .find(item => item.restaurant === currentRestaurant.name).earning.toLocaleString('en', {
+            .find(item => item.store === currentStore.name).earning.toLocaleString('en', {
               style: "currency",
               currency: 'USD'
             })

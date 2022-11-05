@@ -61,15 +61,15 @@ export const productColumns = [
     },
   },
   {
-    field: "restaurant",
-    headerName: <b>Restaurant</b>,
+    field: "store",
+    headerName: <b>Store</b>,
     width: 230,
     renderCell: (params) => {
 
       return (
-        <div className="cellWithRestaurant">
+        <div className="cellWithStore">
 
-          {decryptData(localStorage.getItem(process.env.REACT_APP_RESTAURANTS_KEY)).find(restaurant => restaurant.restaurantId === params.row.restaurantID).name}
+          {decryptData(localStorage.getItem(process.env.REACT_APP_STORES_KEY)).find(store => store.storeId === params.row.storeID).name}
         </div>
       );
     },
@@ -96,7 +96,7 @@ export const productColumns = [
     renderCell: (params) => {
 
       return (
-        <div className="cellWithRestaurant">
+        <div className="cellWithStore">
           {decryptData(localStorage.getItem(process.env.REACT_APP_CATEGORIES_KEY)).find(category => category.id === params.row.categorieId).name}
         </div>
       );
@@ -104,10 +104,10 @@ export const productColumns = [
   },
 ];
 
-export const restaurantColumns = [
+export const storeColumns = [
   {
-    field: "restaurant",
-    headerName: <b>Restaurant</b>,
+    field: "store",
+    headerName: <b>Store</b>,
     width: 250,
     renderCell: (params) => {
       return (
@@ -162,8 +162,8 @@ export const categoryColumns = [
     width: 300,
     renderCell: (params) => {
       return (
-        <div className="cellWithRestaurant">
-          {params.row.type?params.row.type:"restaurant"}
+        <div className="cellWithStore">
+          {params.row.type?params.row.type:"store"}
         </div>
       );
     },
@@ -234,14 +234,14 @@ export const orderColumns = [
     },
   },
   {
-    field: "restaurant",
-    headerName: <b>Restaurant</b>,
+    field: "store",
+    headerName: <b>Store</b>,
     width: 230,
     renderCell: (params) => {
       return (
         <div >
 
-          {params.row.Restaurant.name}
+          {params.row.Store.name}
         </div>
       );
     },
@@ -282,10 +282,10 @@ export const orderColumns = [
   },
 ];
 
-export const restaurantsEarningsColumns = [
+export const storesEarningsColumns = [
   {
-    field: "restaurant",
-    headerName: <b>Restaurant</b>,
+    field: "store",
+    headerName: <b>Store</b>,
     width: 300,
   },
   {

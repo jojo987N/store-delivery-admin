@@ -2,7 +2,7 @@ import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
+import StoreIcon from "@mui/icons-material/Store";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import CategoryIcon from "@mui/icons-material/Category";
 import StoreIcon from "@mui/icons-material/Store";
@@ -16,7 +16,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-import { RestaurantContext } from "../../context/RestaurantContext";
+import { StoreContext } from "../../context/StoreContext";
 import { useContext, useState } from "react";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -44,7 +44,7 @@ function getItem(label, key, icon, children, type) {
 }
 const Sidebar = ({ type }) => {
   console.log("type : ", "/" + type);
-  const { currentRestaurant } = useContext(RestaurantContext);
+  const { currentStore } = useContext(StoreContext);
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const { selectedKey, setSelectedKey } = useContext(SelectedKeyContext);
@@ -71,7 +71,7 @@ const Sidebar = ({ type }) => {
       getItem("Drivers List", "/drivers"),
       getItem("Add Driver", "/drivers/new"),
     ]),
-    getItem("Stores", "sub3", <RestaurantIcon className="icon" />, [
+    getItem("Stores", "sub3", <StoreIcon className="icon" />, [
       getItem("Stores List", "/stores"),
       getItem("Add Store", "/stores/new"),
     ]),

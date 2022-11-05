@@ -29,13 +29,13 @@ import { getAuth } from 'firebase/auth';
   export const firebaseApp = initializeApp(firebaseConfig);
   export const auth = getAuth(firebaseApp)
   export const db = getFirestore()
-  export const restaurantsCol = collection(db, 'restaurants')
+  export const storesCol = collection(db, 'stores')
   export const categoriesCol = collection(db, 'categories')
   export const ordersCol = collection(db, 'orders')
   export const usersCol = collection(db, 'users')
-  export const getRestaurantsFromFirebase = () => {
+  export const getStoresFromFirebase = () => {
     const restos = []
-    return getDocs(restaurantsCol)
+    return getDocs(storesCol)
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
          if(doc)
@@ -86,12 +86,12 @@ export const productsCol = collection(db, 'products')
   })
  }
  const addProducts = () => {
-  getDocs(restaurantsCol)
+  getDocs(storesCol)
     .then(snapshot => snapshot.docs.forEach((doc) => {
       doc.data().dishes.forEach((dishe) => {
         if('name' in dishe)
         addDoc(productsCol, {
-          restaurantID: doc.id,
+          storeID: doc.id,
           ...dishe ,
           createdAt: serverTimestamp()      
         }).then(()=>console.log("ADDED"))
@@ -100,15 +100,15 @@ export const productsCol = collection(db, 'products')
 }
 export const addProduct = (name, description, price) => {
   return addDoc(productsCol, {
-    restaurantID: auth.currentUser?.uid,
+    storeID: auth.currentUser?.uid,
     name,
     description,
     price,
     createdAt: serverTimestamp()      
   }) 
 }
-export const addRestaurant = (inputs) => {
-  addDoc(restaurantsCol, {
+export const addStore = (inputs) => {
+  addDoc(storesCol, {
     ...inputs
   })
 }
@@ -118,11 +118,11 @@ export const addCategory = (data) => {
     createdAt: serverTimestamp()      
   }) 
 }
-export const getRestaurantById = (uid)=>{
-  const q= query(restaurantsCol, where('managerId', '==', uid))
+export const getStoreById = (uid)=>{
+  const q= query(storesCol, where('managerId', '==', uid))
   return getDocs(q).then((snapshot) => {
     if(snapshot.docs[0])
-    return {...snapshot.docs[0].data(), restaurantId: snapshot.docs[0].id}
+    return {...snapshot.docs[0].data(), storeId: snapshot.docs[0].id}
   })
 }
 export const updateOrder = (order_Id, status, deliveryTime)=>{
@@ -148,7 +148,7 @@ const getOrder = ()=>{
 }
 export const getCategoriesTest = () => {
   const categories = []
-  return getDocs(restaurantsCol)
+  return getDocs(storesCol)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         doc.data().categories.forEach(categorie =>{
@@ -237,7 +237,7 @@ export const updateOrdersFromFirebase = ()=>{
    return getOrdersFromFirebase()
    .then(orders => {
    return orders.reduce((a, v, i)=>{
-    a[v.Restaurant.name] = (a[v.Restaurant.name] || 0 ) + v.User.items.reduce((a,v)=> a + v.price, 0) 
+    a[v.Store.name] = (a[v.Store.name] || 0 ) + v.User.items.reduce((a,v)=> a + v.price, 0) 
     return a
    },{})
   }

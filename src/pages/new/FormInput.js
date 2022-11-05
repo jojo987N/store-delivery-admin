@@ -3,8 +3,8 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import Select from "react-select";
 import { decryptData } from "../../utils";
 import TimePicker from "react-time-picker";
-import { addCategory, addRestaurant, updateUser } from "../../firebase";
-import { restaurantModel } from "../../model";
+import { addCategory, addStore, updateUser } from "../../firebase";
+import { storeModel } from "../../model";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { roles, categoryType } from "../../formSource";
 import Inputs from "./Inputs";
@@ -140,7 +140,7 @@ class FormInput extends React.Component {
             />
           </div>
         )}
-        {this.props.type === "restaurant" && (
+        {this.props.type === "store" && (
           <>
             <div className="formInput">
               <label>Reward</label>

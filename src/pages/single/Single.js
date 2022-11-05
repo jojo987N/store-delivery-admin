@@ -21,23 +21,23 @@ import { flexbox } from "@mui/system";
         <div className="top">
           <div className="left">
             <div className="editButton">Edit</div>
-            <h1 className="title">{type === "orders" && "Restaurant"}</h1>
+            <h1 className="title">{type === "orders" && "Store"}</h1>
             <div className="item">
               <img
-                src={type === "orders" && orderData.User.items[0].restaurant.image_url}
+                src={type === "orders" && orderData.User.items[0].store.image_url}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h2 className="itemTitle">{type === "orders" && orderData.User.items[0].restaurant.name}</h2>
+                <h2 className="itemTitle">{type === "orders" && orderData.User.items[0].store.name}</h2>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{type === "orders" && orderData.User.items[0].restaurant.phone}</span>
+                  <span className="itemValue">{type === "orders" && orderData.User.items[0].store.phone}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                  {type === "orders" && orderData.User.items[0].restaurant.location.display_address.reduce((a, v) => a + v , "")}
+                  {type === "orders" && orderData.User.items[0].store.location.display_address.reduce((a, v) => a + v , "")}
                   </span>
                 </div>
                 <div className="detailItem">

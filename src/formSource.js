@@ -71,7 +71,7 @@ export const userInputs = [
       type: "text",
     },
   ];
-  export const restaurantInputs = [
+  export const storeInputs = [
     {
       id: 1,
       label: "Name",
@@ -187,8 +187,8 @@ export const userInputs = [
       label: "Food"
     },
     {
-      value: "restaurant",
-      label: "Restaurant"
+      value: "store",
+      label: "Store"
     },
   ]
   

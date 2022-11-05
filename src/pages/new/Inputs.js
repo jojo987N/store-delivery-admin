@@ -13,7 +13,7 @@ const Inputs = ({ type, setState, state }) => {
       break;
     case "drivers":
       break;
-    case "restaurants":
+    case "stores":
       break;
     case "categories":
       return (

@@ -1,9 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useContext, useState } from "react"
-import { auth, getRestaurantById, getRestaurantId } from "../../firebase"
+import { auth, getStoreById, getStoreId } from "../../firebase"
 import "./login.scss"
 import { useNavigate } from "react-router-dom";
-import { RestaurantContext } from "../../context/RestaurantContext";
+import { StoreContext } from "../../context/StoreContext";
 import { LoadingContext } from "../../context/LoadingContext";
 import { appName } from "../../global";
 
@@ -14,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
-  const {setCurrentRestaurant} = useContext(RestaurantContext)
+  const {setCurrentStore} = useContext(StoreContext)
   const {setLoading} = useContext(LoadingContext)
   const [buttonStyle, setButtonStyle] = useState({
     backgroundColor: "",

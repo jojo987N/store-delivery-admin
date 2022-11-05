@@ -1,4 +1,4 @@
-export const restaurantModel = (latitude, longitude, phone, image_url, address, city, 
+export const storeModel = (latitude, longitude, phone, image_url, address, city, 
     country, name) => ({
       "coordinates":  {
         "latitude": latitude,

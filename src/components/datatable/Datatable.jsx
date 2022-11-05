@@ -1,18 +1,18 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows, productColumns, restaurantColumns, categoryColumns, driverColumns, orderColumns, restaurantsEarningsColumns} from "../../datatablesource";
+import { userColumns, userRows, productColumns, storeColumns, categoryColumns, driverColumns, orderColumns, storesEarningsColumns} from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { getCategories, getEarnings, getFoods, getRestaurantsFromFirebase, getUsersFromFirebase} from "../../firebase";
+import { getCategories, getEarnings, getFoods, getStoresFromFirebase, getUsersFromFirebase} from "../../firebase";
 import { decryptData, encryptData } from "../../utils";
-import { RestaurantContext } from "../../context/RestaurantContext";
+import { StoreContext } from "../../context/StoreContext";
 import { DotLoader } from "react-spinners";
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal, Space } from 'antd';
 
 const Datatable = ({type}) => {
  const { confirm } = Modal;
- const {currentRestaurant} = useContext(RestaurantContext) 
+ const {currentStore} = useContext(StoreContext) 
  const [tab, setTab] = useState({})
  const [title, setTitle] = useState()
   const showDeleteConfirm = (id) => {
@@ -46,7 +46,7 @@ const Datatable = ({type}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-           {type !== "earnings"?<Link to={`/${type}/${(((type==="users" || type === "drivers") && params.row.userId ) || (type === "restaurants" && params.row.restaurantId) ) || params.row.id}`} style={{ textDecoration: "none" }}>
+           {type !== "earnings"?<Link to={`/${type}/${(((type==="users" || type === "drivers") && params.row.userId ) || (type === "stores" && params.row.storeId) ) || params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>:<></>}
             <div
@@ -65,14 +65,14 @@ const Datatable = ({type}) => {
     if(!localStorage.getItem(process.env.REACT_APP_USERS_KEY))
     await getUsersFromFirebase().then(users => localStorage.setItem(process.env.REACT_APP_USERS_KEY, encryptData(users)))
     if(!localStorage.getItem(process.env.REACT_APP_EARNINGS_KEY))
-    await getEarnings().then(restaurantsEarnings => localStorage.setItem(process.env.REACT_APP_EARNINGS_KEY, encryptData(Object.keys(restaurantsEarnings).map((restaurant, index) => ({id: index, restaurant:restaurant, earning:restaurantsEarnings[restaurant], adminCommission: restaurantsEarnings[restaurant], percentage: 25}) ))))
+    await getEarnings().then(storesEarnings => localStorage.setItem(process.env.REACT_APP_EARNINGS_KEY, encryptData(Object.keys(storesEarnings).map((store, index) => ({id: index, store:store, earning:storesEarnings[store], adminCommission: storesEarnings[store], percentage: 25}) ))))
     switch (type) {
       case "products":
         setTitle("Menu")
       if(!localStorage.getItem(process.env.REACT_APP_PRODUCTS_KEY))
        getFoods().then(foods => localStorage.setItem(process.env.REACT_APP_PRODUCTS_KEY, encryptData(foods)))
        .then(foods => setTab({
-        rows: foods.filter(product => product.restaurantID === currentRestaurant.restaurantId),
+        rows: foods.filter(product => product.storeID === currentStore.storeId),
         columns: productColumns
       }))
       else{
@@ -103,12 +103,12 @@ const Datatable = ({type}) => {
           columns: driverColumns
         })
         break
-      case "restaurants":
-        setTitle("Restaurant")
-        getRestaurantsFromFirebase().then(restaurants => {
+      case "stores":
+        setTitle("Store")
+        getStoresFromFirebase().then(stores => {
           setTab({
-            rows: restaurants,
-            columns: restaurantColumns
+            rows: stores,
+            columns: storeColumns
           })
         })
       break
@@ -126,7 +126,7 @@ const Datatable = ({type}) => {
         console.log( decryptData(localStorage.getItem(process.env.REACT_APP_EARNINGS_KEY)))
         setTab({
           rows: decryptData(localStorage.getItem(process.env.REACT_APP_EARNINGS_KEY)),
-          columns: restaurantsEarningsColumns
+          columns: storesEarningsColumns
         })
       break
       default:

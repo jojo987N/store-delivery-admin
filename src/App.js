@@ -5,13 +5,13 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { decryptData, encryptData } from "./utils";
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
-import { carInputs, categoryFoodInputs, categoryInputs, productInputs, restaurantInputs, userInputs } from "./formSource";
+import { carInputs, categoryFoodInputs, categoryInputs, productInputs, storeInputs, userInputs } from "./formSource";
 import { auth, getOrdersFromFirebase } from './firebase'
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { OrdersContext } from "./context/OrdersContext"
 import { AuthProvider } from "./context/Auth";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import { RestaurantProvider } from "./context/RestaurantContext";
+import { StoreProvider } from "./context/StoreContext";
 import { LoadingProvider } from "./context/LoadingContext";
 import { AuthContext } from "./context/Auth";
 import { onAuthStateChanged } from "firebase/auth";
@@ -80,10 +80,10 @@ function App() {
                   </Route>
                   <Route path="stores">
                     <Route index element={<List key="stores" type="stores" />} />
-                    <Route path=":storeId" element={<New inputs={restaurantInputs} type="stores" title="Update Store" />} />
+                    <Route path=":storeId" element={<New inputs={storeInputs} type="stores" title="Update Store" />} />
                     <Route
                       path="new"
-                      element={<New inputs={restaurantInputs} type="stores" title="Add New Store" />}
+                      element={<New inputs={storeInputs} type="stores" title="Add New Store" />}
                     />
                   </Route>
                   <Route path="drivers">

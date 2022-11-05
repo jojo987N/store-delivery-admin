@@ -1,15 +1,15 @@
 import React, { createContext, useEffect, useState } from 'react'
 
-export const RestaurantContext = createContext();
+export const StoreContext = createContext();
 
-export const RestaurantProvider = ({children})=> {
+export const StoreProvider = ({children})=> {
 
-    const [currentRestaurant, setCurrentRestaurant] = useState(null)
+    const [currentStore, setCurrentStore] = useState(null)
 
     return (
-        <RestaurantContext.Provider value={{currentRestaurant, setCurrentRestaurant}}>
+        <StoreContext.Provider value={{currentStore, setCurrentStore}}>
           {children}
-        </RestaurantContext.Provider>
+        </StoreContext.Provider>
     )
 
 }

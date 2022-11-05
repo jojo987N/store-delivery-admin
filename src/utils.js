@@ -4,7 +4,7 @@ import {
   getEarnings,
   getFoods,
   getOrdersFromFirebase,
-  getRestaurantsFromFirebase,
+  getStoresFromFirebase,
   getUsersFromFirebase,
 } from "./firebase";
 
@@ -44,8 +44,8 @@ export const getData = (type) => {
         users.filter((user) => user.Role === "driver")
       );
       break;
-    case "restaurants":
-      return getRestaurantsFromFirebase();
+    case "stores":
+      return getStoresFromFirebase();
       break;
     case "categories":
       return getCategories();
