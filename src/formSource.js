@@ -135,7 +135,7 @@ export const userInputs = [
      alias: "description"
     },
   ];
-  export const categoryFoodInputs = [
+  export const categoryProductInputs = [
     {
       id: 1,
       label: "Name",
@@ -183,8 +183,8 @@ export const userInputs = [
 
   export const categoryType = [
     {
-      value: "food",
-      label: "Food"
+      value: "product",
+      label: "Product"
     },
     {
       value: "store",

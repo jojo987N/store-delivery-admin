@@ -75,14 +75,14 @@ import { getAuth } from 'firebase/auth';
   })
  }
 export const productsCol = collection(db, 'products')
- export const getFoods = ()=>{
-  const foods=[]
+ export const getProducts = ()=>{
+  const products=[]
   const q= query(productsCol, orderBy('createdAt', 'desc'))
   return getDocs(q).then(snapshot=>{
      snapshot.docs.forEach((doc) => {
-        foods.push({...doc.data(), id: doc.id })
+        products.push({...doc.data(), id: doc.id })
       })
-      return foods
+      return products
   })
  }
  const addProducts = () => {

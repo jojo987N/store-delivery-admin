@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows, productColumns, storeColumns, categoryColumns, driverColumns, orderColumns, storesEarningsColumns} from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { getCategories, getEarnings, getFoods, getStoresFromFirebase, getUsersFromFirebase} from "../../firebase";
+import { getCategories, getEarnings, getProducts, getStoresFromFirebase, getUsersFromFirebase} from "../../firebase";
 import { decryptData, encryptData } from "../../utils";
 import { StoreContext } from "../../context/StoreContext";
 import { DotLoader } from "react-spinners";
@@ -70,9 +70,9 @@ const Datatable = ({type}) => {
       case "products":
         setTitle("Product")
       if(!localStorage.getItem(process.env.REACT_APP_PRODUCTS_KEY))
-       getFoods().then(foods => localStorage.setItem(process.env.REACT_APP_PRODUCTS_KEY, encryptData(foods)))
-       .then(foods => setTab({
-        rows: foods.filter(product => product.storeID === currentStore.storeId),
+       getProducts().then(products => localStorage.setItem(process.env.REACT_APP_PRODUCTS_KEY, encryptData(products)))
+       .then(products => setTab({
+        rows: products.filter(product => product.storeID === currentStore.storeId),
         columns: productColumns
       }))
       else{

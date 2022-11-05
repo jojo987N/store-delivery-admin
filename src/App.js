@@ -5,7 +5,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { decryptData, encryptData } from "./utils";
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
-import { carInputs, categoryFoodInputs, categoryInputs, productInputs, storeInputs, userInputs } from "./formSource";
+import { carInputs, categoryProductInputs, categoryInputs, productInputs, storeInputs, userInputs } from "./formSource";
 import { auth, getOrdersFromFirebase } from './firebase'
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { OrdersContext } from "./context/OrdersContext"

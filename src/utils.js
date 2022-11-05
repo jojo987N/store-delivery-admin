@@ -2,7 +2,7 @@ import CryptoJS from "crypto-js";
 import {
   getCategories,
   getEarnings,
-  getFoods,
+  getProducts,
   getOrdersFromFirebase,
   getStoresFromFirebase,
   getUsersFromFirebase,
@@ -29,7 +29,7 @@ export const decryptData = (ciphertext) => {
 export const getData = (type) => {
   switch (type) {
     case "products":
-      return getFoods();
+      return getProducts();
       break;
     case "transactions":
       return getOrdersFromFirebase().then((orders) =>
